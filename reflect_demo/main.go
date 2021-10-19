@@ -154,54 +154,12 @@ func loadIni(fileName string, data interface{}) (err error) {
 	return
 }
 
-const (
-	test = "dd"
-)
-
 func main() {
-	fmt.Print(reflect.TypeOf(test))
-	// var cfg Config
-	// err := loadIni("./reflect_demo/conf.ini", &cfg)
-	// if err != nil {
-	// 	fmt.Printf("load ini faild, err:%v", err)
-	// 	return
-	// }
-	// fmt.Printf("%#v", cfg)
+	var cfg Config
+	err := loadIni("./reflect_demo/conf.ini", &cfg)
+	if err != nil {
+		fmt.Printf("load ini faild, err:%v", err)
+		return
+	}
+	fmt.Printf("%#v", cfg)
 }
-
-// func LoadIni(b []byte, v interface{}) error {
-// 	m := MysqlConfig{}
-// 	f, err := os.OpenFile("reflect_demo/mysql.ini", os.O_RDONLY, 0644)
-// 	if err != nil {
-// 		panic("file not found")
-// 	}
-// 	defer f.Close()
-// 	buf := bufio.NewReader(f)
-// 	for {
-// 		line, err := buf.ReadString('\n')
-// 		line = strings.TrimSpace(line)
-// 		if err != nil {
-// 			if err == io.EOF {
-// 				return nil
-// 			}
-// 			return err
-// 		}
-// 		t := reflect.TypeOf(v)
-// 		for i := 0; i < t.NumField(); i++ {
-// 			stuct_field := t.Field(i)
-// 			ini_field := strings.Split(line, "=")
-// 			if stuct_field.Tag.Get("ini") == ini_field[0] {
-// 				_, value := ini_field[0], ini_field[1]
-// 				m.Address = value
-// 				fmt.Println(m)
-// 			}
-// 			// fmt.Printf("name:%s index:%d type:%v json tag:%v\n", stuct_field.Name, stuct_field.Index, stuct_field.Type, stuct_field.Tag.Get("ini"))
-// 		}
-// 		// fmt.Println(reflect.ValueOf(v).FieldByName(line).IsValid())
-// 	}
-// }
-
-// func main() {
-// 	M := MysqlConfig{}
-// 	LoadMysqlIni(M)
-// }
