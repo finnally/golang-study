@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"study.go.com/go_stu/logmodules/logmod"
+	"study.go.com/logmodules/logmod"
 )
 
 func main() {
